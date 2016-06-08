@@ -67,13 +67,17 @@
 
       console.log(rightRGB);
 
-      var value =
-        "-webkit-linear-gradient(left, " + leftRGB + " , " + rightRGB + ")" + ", "
-        "-moz-linear-gradient(right, " + leftRGB + " , " + rightRGB + ")" + ", "
-        "-o-linear-gradient(right, " + leftRGB + " , " + rightRGB + ")" + ", "
-        "linear-gradient(to right, " + leftRGB + " , " + rightRGB + ")";
+      var value = [
+        "-webkit-linear-gradient(left, " + leftRGB + " , " + rightRGB + ")",
+        "-moz-linear-gradient(right, " + leftRGB + " , " + rightRGB + ")",
+        "-o-linear-gradient(right, " + leftRGB + " , " + rightRGB + ")",
+        "linear-gradient(to right, " + leftRGB + " , " + rightRGB + ")"
+      ];
 
-      elem[0].style["background"] = value;
+      for (var i = value.length - 1; i + 1 > 0; i--) {
+        elem[0].setAttribute("style", "background: " + value[i] + "; " + elem[0].style.cssText);
+        console.log(elem[0]);
+      }
 
     },
     gradiate: function() {
